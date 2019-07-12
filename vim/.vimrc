@@ -50,7 +50,9 @@ call plug#end()
 " }}}
 
 " {{{ mappings
-call camelcasemotion#CreateMotionMappings('<leader>')
+if exists('*camelcasemotion#CreateMotionMappings')
+  call camelcasemotion#CreateMotionMappings('<leader>')
+endif
 
 nnoremap <silent> <leader>ev :tabedit ~/.vimrc<CR>
 nnoremap <leader>sv :source ~/.vimrc<CR>
@@ -173,10 +175,10 @@ autocmd BufRead * set suffixesadd+=.js,.jsx
 " }}}
 
 " {{{ colorscheme
-colorscheme gruvbox
-" colorscheme one
-" colorscheme OceanicNext
-" colorscheme PaperColor
+" silent! colorscheme gruvbox
+silent! colorscheme one
+" silent! colorscheme OceanicNext
+" silent! colorscheme PaperColor
 
 " AirlineTheme oceanicnext
 
