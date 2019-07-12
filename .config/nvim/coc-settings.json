@@ -1,0 +1,21 @@
+{
+  "typescript.suggest.enabled": true,
+  "typescript.suggestionActions.enabled": true,
+  "typescript.suggest.completeFunctionCalls": true,
+  "typescript.preferences.quoteStyle": "single",
+  "suggest.enablePreview": true,
+  // "diagnostic.displayByAle": false,
+  "diagnostic.errorSign": "✘",
+  "diagnostic.warningSign": "⚡",
+  "diagnostic.warningSign": "¿",
+  "diagnostic.checkCurrentLine": true,
+  "diagnostic.hintSign": "¿",
+  "diagnostic.infoSign": "¿",
+  "diagnostic.virtualText": true,
+  "diagnostic.highlightOffset": 100,
+  "json.format.enable": false,
+  "eslint.filetypes": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+  "eslint.options": {
+     "configFile": "./.eslintrc.json"
+  }
+}
