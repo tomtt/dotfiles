@@ -2,14 +2,6 @@
 " vim: foldmethod=marker
 " }}}
 
-" {{{ setup vim-plug
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-" }}}
-
 " {{{ plugins
 call plug#begin('~/.vim/plugged')
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -30,6 +22,12 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-markdown'
   " Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
   Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+
+  Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+  Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
+  Plug 'neoclide/coc-jest', {'do': 'yarn install --frozen-lockfile'}
+  Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
+  Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
 
   " javascript
   Plug 'othree/yajs.vim', { 'for': 'javascript' }
