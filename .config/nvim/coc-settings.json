@@ -17,5 +17,6 @@
   "eslint.filetypes": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
   "eslint.options": {
      "configFile": "./.eslintrc.json"
-  }
+  },
+  "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown", "javascript", "typescript"]
 }

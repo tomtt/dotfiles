@@ -23,11 +23,13 @@ call plug#begin('~/.vim/plugged')
   " Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
   Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
+  " CoC plugins
   Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
   Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
   Plug 'neoclide/coc-jest', {'do': 'yarn install --frozen-lockfile'}
   Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
   Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
+  Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
 
   " javascript
   Plug 'othree/yajs.vim', { 'for': 'javascript' }
@@ -91,6 +93,10 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+" for coc-prettier
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+nmap <leader>f :Prettier<CR>
 " }}}
 
 " {{{ plugin settings
