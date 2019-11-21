@@ -3,6 +3,7 @@
   "typescript.suggestionActions.enabled": true,
   "typescript.suggest.completeFunctionCalls": true,
   "typescript.preferences.quoteStyle": "single",
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "suggest.enablePreview": true,
   // "diagnostic.displayByAle": false,
   "diagnostic.errorSign": "✘",
@@ -16,7 +17,7 @@
   "json.format.enable": false,
   "eslint.filetypes": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
   "eslint.options": {
-     "configFile": "./.eslintrc.json"
+     "configFile": "./.eslintrc.js"
   },
-  "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown", "javascript", "typescript"]
+  "coc.preferences.formatOnSaveFiletypes": ["css", "javascript", "javascript.jsx", "javascriptreact", "typescript", "typescriptreact"]
 }

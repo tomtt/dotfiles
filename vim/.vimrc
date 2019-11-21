@@ -17,9 +17,10 @@ call plug#begin('~/.vim/plugged')
   Plug 'bkad/CamelCaseMotion'
   Plug 'airblade/vim-gitgutter'
   Plug 'tpope/vim-fugitive'
-  Plug 'RRethy/vim-hexokinase'
+  Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
   Plug 'jesseleite/vim-noh'
   Plug 'tpope/vim-markdown'
+  Plug 'kizza/actionmenu.nvim'
   " Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
   Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
@@ -35,7 +36,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'othree/yajs.vim', { 'for': 'javascript' }
   Plug 'othree/es.next.syntax.vim'
   " this one below messes up typescript syntax
-  " Plug 'maxmellon/vim-jsx-pretty'
+  Plug 'maxmellon/vim-jsx-pretty'
 
   " typescript
   Plug 'HerringtonDarkholme/yats.vim'
@@ -46,6 +47,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'mhartington/oceanic-next'
   Plug 'ayu-theme/ayu-vim'
   Plug 'NLKNguyen/papercolor-theme'
+  Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 call plug#end()
 " }}}
 
@@ -59,6 +61,7 @@ nnoremap <leader>sv :source ~/.vimrc<CR>
 nnoremap <silent> <C-p> :Files<CR>
 nnoremap <C-f> :Ag<Space>
 nnoremap <silent> <C-n> :Texplore<CR>
+nnoremap <silent> <C-b> :Buffers<CR>
 nnoremap <silent> <leader>ss :StripWhitespace<CR>
 nnoremap <silent> <C-l> :nohlsearch<CR><C-l>
 nmap <C-k> <Plug>(coc-diagnostic-prev)
@@ -128,7 +131,7 @@ let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
 let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
 
-" Run jest for current project
+" run jest for current project
 command! -nargs=0 Jest :call  CocAction('runCommand', 'jest.projectTest')
 command! -nargs=0 JestCurrent :call  CocAction('runCommand', 'jest.fileTest', ['%'])
 nnoremap <leader>te :call CocAction('runCommand', 'jest.singleTest')<CR>
@@ -148,6 +151,24 @@ let g:Hexokinase_ftAutoload = ['*']
 noremap <Plug>NohAfter zz
 
 let g:markdown_fenced_languages = ['css', 'javascript', 'js=javascript', 'typescript']
+
+" actionmenu.nvim integration with coc
+let s:code_actions = []
+
+func! ActionMenuCodeActions() abort
+  let s:code_actions = CocAction('codeActions')
+  let l:menu_items = map(copy(s:code_actions), { index, item -> item['title'] })
+  call actionmenu#open(l:menu_items, 'ActionMenuCodeActionsCallback')
+endfunc
+
+func! ActionMenuCodeActionsCallback(index, item) abort
+  if a:index >= 0
+    let l:selected_code_action = s:code_actions[a:index]
+    let l:response = CocAction('doCodeAction', l:selected_code_action)
+  endif
+endfunc
+
+nnoremap <silent> <leader>hm :call ActionMenuCodeActions()<CR>
 " }}}
 
 " {{{ settings
@@ -160,6 +181,7 @@ endif
 
 set cursorline
 set number
+set relativenumber
 set incsearch
 set hlsearch
 set expandtab
@@ -173,18 +195,28 @@ set nowrap
 set completeopt+=menuone
 set cmdheight=2
 set updatetime=300
+set inccommand=nosplit
+set updatetime=300
 
 " yats.vim sets suffixes to only .ts,.tsx
 autocmd BufRead * set suffixesadd+=.js,.jsx
 " }}}
 
 " {{{ colorscheme
+let ayucolor="mirage"
+" let ayucolor="dark"
+" let ayucolor="light"
+silent! colorscheme ayu
+
 " silent! colorscheme gruvbox
-silent! colorscheme one
+" silent! colorscheme one
 " silent! colorscheme OceanicNext
+" set background=light
 " silent! colorscheme PaperColor
+" silent! colorscheme challenger_deep
 
 " AirlineTheme oceanicnext
+let g:airline_theme='oceanicnext'
 
 " let g:airline_theme='papercolor'
 " let g:airline_theme='onedark'
