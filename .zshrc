@@ -7,40 +7,11 @@ plug "zsh-users/zsh-syntax-highlighting"
 plug "wintermi/zsh-starship"
 plug "chivalryq/git-alias"
 
-# Callbell
+. "$HOME/.asdf/asdf.sh"
+
 alias bex='bundle exec'
 alias rc='bex rails c'
-alias rubocop='bex rubocop'
-alias rspec='bex rspec'
-alias fs='foreman start'
-alias callbell=~/apps/callbell
-
-export PATH="$HOME/.tmuxifier/bin:$PATH"
-export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
-export EDITOR=nvim
-
- . /opt/homebrew/opt/asdf/libexec/asdf.sh
-
-
-services() {
-	brew services $1 nginx
-	brew services $1 redis
-	brew services $1 postgresql@14
-}
-
-go_run() {
-	if [ "$1" = 'gupshup' ]; then
-		go run cmd/whatsappbusinessapi/main.go
-	elif [ "$1" = 'cloud' ]; then
-		go run cmd/whatsappcloudapi/main.go --verify-token=mytokenlala --meta-cloud-app-secret=supersecret
-	else
-		echo '(gupshup or cloud) only'
-		exit 1
-	fi
-}
-# ---------
-
-export PYTHON3_LOCATION="$(which python3)"
+alias rs='bex rails s'
 
 if type rg &> /dev/null; then
 	export IGNORED_FOLDERS='.git,node_modules,vendor,tmp,cache,package-lock.json'
