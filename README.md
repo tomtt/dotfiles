@@ -7,6 +7,8 @@ Automatically install a nerdy env with some cool stuff:
 - 🔥 [Tmux](https://github.com/tmux/tmux/wiki)
 - 🐈 [Catppuccin](https://github.com/catppuccin/catppuccin)
 
+Also uses [Stow](https://www.gnu.org/software/stow/manual/stow.html) to easy keep track of changes in this dotfiles.
+
 ## Installation
 1 - Install brew
 ```zsh
