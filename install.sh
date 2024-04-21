@@ -9,7 +9,10 @@ brew install git
 brew install curl
 brew install ripgrep
 brew install fd
-brew install asdf
+brew install fontconfig
+
+echo 'Installing asdf'
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf
 
 echo 'Installing nerd-fonts...'
 curl -fsSL https://raw.githubusercontent.com/getnf/getnf/main/install.sh | bash

@@ -1,3 +1,6 @@
+# Uncomment if linux based (ubuntu, arch, etc..)
+# eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
 # Created by Zap installer
 [ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
 plug "zsh-users/zsh-autosuggestions"
@@ -6,8 +9,6 @@ plug "zap-zsh/zap-prompt"
 plug "zsh-users/zsh-syntax-highlighting"
 plug "wintermi/zsh-starship"
 plug "chivalryq/git-alias"
-
-. "$HOME/.asdf/asdf.sh"
 
 alias bex='bundle exec'
 alias rc='bex rails c'
@@ -20,7 +21,8 @@ if type rg &> /dev/null; then
 	export FZF_DEFAULT_OPTS='-m --height 50% --border'
 fi
 
-eval "$(tmuxifier init -)"
+export EDITOR=nvim
+. "$HOME/.asdf/asdf.sh"
 
 # Load and initialise completion system
 autoload -Uz compinit
