@@ -31,9 +31,14 @@ touch ~/.zshrc
 brew install starship
 rm -rf ~/.zshrc
 
-echo 'Linking dot files...'
-stow .
-
 echo 'Installing zap...'
 rm -rf ~/.zshrc
 zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh)
+
+echo 'Linking dot files...'
+cd ~/dotfiles
+stow .
+
+echo ''
+read -p "Do you like to configure Github ssh? (y/n): " confirm && [[ $confirm == [yY] ]] || exit 1
+sh configure_git.sh

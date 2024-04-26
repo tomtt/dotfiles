@@ -1,11 +1,14 @@
 #!/bin/bash
 
-echo 'Configuring git'
-git config --global user.name "Murilo Romeo"
-git config --global user.email "muriloh65@gmail.com"
+read -p "Enter your fullname: " fullname
+read -p "Enter your Github email: " email
 
-ssh-keygen -t ed25519 -C "muriloh65@gmail.com"
+echo 'Configuring git'
+git config --global user.name "$fullname"
+git config --global user.email "$email"
+
+ssh-keygen -t ed25519 -C "$email"
 
 echo ''
-echo 'Copy this and paste on github'
+echo 'Copy this token and paste on github ssh session'
 cat ~/.ssh/id_ed25519.pub
