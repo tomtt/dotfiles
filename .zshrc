@@ -23,7 +23,11 @@ if type rg &> /dev/null; then
 	export FZF_DEFAULT_OPTS='-m --height 50% --border'
 fi
 
+# Ctrl + space to clear screen
+bindkey '^ ' clear-screen
+
 export EDITOR=nvim
+
 . "$HOME/.asdf/asdf.sh"
 
 # Load and initialise completion system
