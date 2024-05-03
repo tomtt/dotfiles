@@ -5,12 +5,25 @@ return {
       colorscheme = "catppuccin",
     },
   },
-  { "folke/flash.nvim", enabled = false },
   {
-    "hrsh7th/nvim-cmp",
-    opts = function(_, opts)
-      local cmp = require("cmp")
-      opts.mapping["<Tab>"] = cmp.mapping.complete()
+    "L3MON4D3/LuaSnip",
+    keys = function()
+      return {}
     end,
   },
+  {
+    "hrsh7th/nvim-cmp",
+    ---@param opts cmp.ConfigSchema
+    opts = function(_, opts)
+      local cmp = require("cmp")
+
+      opts.mapping = vim.tbl_extend("force", opts.mapping, {
+        ["<CR>"] = cmp.config.disable,
+        ["<Tab>"] = cmp.mapping.confirm({ select = true }),
+        ["<C-j>"] = cmp.mapping(function() end, { "i", "s" }),
+      })
+    end,
+  },
+  { "echasnovski/mini.pairs", enabled = false },
+  { "folke/flash.nvim", enabled = false },
 }
