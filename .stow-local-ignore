@@ -1,3 +1,4 @@
 .git
 install.sh
 configure_git.sh
+.gitignore

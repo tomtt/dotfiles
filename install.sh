@@ -10,6 +10,7 @@ brew install curl
 brew install ripgrep
 brew install fd
 brew install fontconfig
+brew install unzip
 
 echo 'Installing asdf'
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf
