@@ -9,6 +9,11 @@ Automatically install a nerdy env with some cool stuff:
 
 Also uses [Stow](https://www.gnu.org/software/stow/manual/stow.html) to easy keep track of changes in this dotfiles.
 
+## Screenshots
+<img width="1448" alt="Screenshot 2024-04-21 at 11 25 24" src="https://github.com/muromeo1/dotfiles/assets/22664903/b82e0cdf-12ba-46dd-a94f-2b6e9e10830d">
+
+<img width="1452" alt="Screenshot 2024-04-21 at 11 27 45" src="https://github.com/muromeo1/dotfiles/assets/22664903/8b7dbf6e-8ac8-42c2-a0d8-2047f7f166c2">
+
 ## Installation
 1 - Install brew
 ```zsh
@@ -41,9 +46,4 @@ Configure git
 ```zsh
 sh configure_git.sh
 ```
-
-## Screenshots
-<img width="1448" alt="Screenshot 2024-04-21 at 11 25 24" src="https://github.com/muromeo1/dotfiles/assets/22664903/b82e0cdf-12ba-46dd-a94f-2b6e9e10830d">
-
-<img width="1452" alt="Screenshot 2024-04-21 at 11 27 45" src="https://github.com/muromeo1/dotfiles/assets/22664903/8b7dbf6e-8ac8-42c2-a0d8-2047f7f166c2">
 
