@@ -10,6 +10,7 @@ brew install curl
 brew install ripgrep
 brew install fd
 brew install fontconfig
+brew install unzip
 
 echo 'Installing asdf'
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf
@@ -29,11 +30,10 @@ rm -rf ~/.config/nvim
 echo 'Installing starship...'
 touch ~/.zshrc
 brew install starship
-rm -rf ~/.zshrc
 
 echo 'Installing zap...'
+$(which zsh) <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh)
 rm -rf ~/.zshrc
-zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh)
 
 echo 'Linking dot files...'
 cd ~/dotfiles
