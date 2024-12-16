@@ -1,31 +1,37 @@
 return {
+  -- Catpuccin as main theme
   {
     "LazyVim/LazyVim",
     opts = {
       colorscheme = "catppuccin",
     },
   },
+
+  -- Honestly, I can't remember
   {
     "L3MON4D3/LuaSnip",
     keys = function()
       return {}
     end,
   },
-  {
-    "hrsh7th/nvim-cmp",
-    ---@param opts cmp.ConfigSchema
-    opts = function(_, opts)
-      local cmp = require("cmp")
 
-      opts.mapping = vim.tbl_extend("force", opts.mapping, {
-        ["<CR>"] = cmp.config.disable,
-        ["<Tab>"] = cmp.mapping.confirm({ select = true }),
-        ["<C-j>"] = cmp.mapping(function() end, { "i", "s" }),
-      })
-    end,
+  -- Use tab instead of enter to select completion
+  {
+    "saghen/blink.cmp",
+    opts = {
+      keymap = {
+        preset = "super-tab",
+      },
+    },
   },
+
+  -- Disable mini.pairs to use endwise instead
   { "echasnovski/mini.pairs", enabled = false },
+
+  -- Disable flash.nvim, really annoying
   { "folke/flash.nvim", enabled = false },
+
+  -- ruby-lsp config to not ovveride code highlighting
   {
     "neovim/nvim-lspconfig",
     opts = {
