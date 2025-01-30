@@ -19,7 +19,9 @@ $java\
 $kotlin\
 $haskell\
 $python\
-[](fg:teal bg:purple)\
+[](fg:teal bg:blue)\
+$docker_context\
+[](fg:blue bg:purple)\
 $time\
 [ ](fg:purple)\
 $line_break$character"""
@@ -168,6 +170,8 @@ format = '[[ $symbol( $version) ](fg:base bg:teal)]($style)'
 symbol = ""
 style = "bg:mantle"
 format = '[[ $symbol( $context) ](fg:base bg:blue)]($style)'
+only_with_files = true
+detect_files = ["docker-compose.yml", "docker-compose.yaml", "Dockerfile"]
 
 [time]
 disabled = false
