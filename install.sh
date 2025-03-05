@@ -4,7 +4,6 @@ cd ~/
 
 echo 'Installing dependencies...'
 brew install stow
-brew install zsh
 brew install git
 brew install curl
 brew install ripgrep
@@ -22,19 +21,23 @@ getnf -i JetBrainsMono
 
 echo 'Installing tmux...'
 brew install tmux
-rm -rf ~/.tmux.conf
 
 echo 'Installing neovim...'
 brew install neovim
-rm -rf ~/.config/nvim
 
 echo 'Installing starship...'
-touch ~/.zshrc
 brew install starship
 
 echo 'Installing zap...'
-$(which zsh) <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh)
+zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh)
+
+echo 'Installing tmux tpm...'
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+echo 'Cleaning files...'
 rm -rf ~/.zshrc
+rm -rf ~/.config/nvim
+rm -rf ~/.tmux.conf
 
 echo 'Linking dot files...'
 cd ~/dotfiles

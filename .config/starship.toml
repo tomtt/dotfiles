@@ -20,12 +20,13 @@ $kotlin\
 $haskell\
 $python\
 [](fg:teal bg:blue)\
-$docker_context\
+$kubernetes\
 [](fg:blue bg:purple)\
 $time\
 [ ](fg:purple)\
 $line_break$character"""
 
+command_timeout = 1000
 palette = 'catppuccin_mocha'
 
 [palettes.gruvbox_dark]
@@ -170,8 +171,17 @@ format = '[[ $symbol( $version) ](fg:base bg:teal)]($style)'
 symbol = ""
 style = "bg:mantle"
 format = '[[ $symbol( $context) ](fg:base bg:blue)]($style)'
-only_with_files = true
-detect_files = ["docker-compose.yml", "docker-compose.yaml", "Dockerfile"]
+
+[kubernetes]
+disabled = false
+symbol = "⎈"
+style = "bg:blue"
+format = '[[ $symbol( $context) ](fg:base bg:blue)]($style)'
+
+# [[kubernetes.contexts]]
+# context_pattern = "^production$"
+# context_alias = "production"
+# style = "green"
 
 [time]
 disabled = false
