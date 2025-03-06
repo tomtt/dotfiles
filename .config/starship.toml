@@ -178,11 +178,6 @@ symbol = "⎈"
 style = "bg:blue"
 format = '[[ $symbol( $context) ](fg:base bg:blue)]($style)'
 
-# [[kubernetes.contexts]]
-# context_pattern = "^production$"
-# context_alias = "production"
-# style = "green"
-
 [time]
 disabled = false
 time_format = "%R"
