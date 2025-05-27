@@ -63,4 +63,16 @@ return {
       },
     },
   },
+
+  -- Force to not search for .git and node_modules on fzf-lua
+  -- Also, append notes.md to the file list
+  {
+    "ibhagwan/fzf-lua",
+    opts = {
+      files = {
+        -- cmd = "rg --files --hidden --glob '!.git/' --glob '!node_modules/'",
+        cmd = "bash -c \"(rg --files --hidden --glob '!.git/' --glob '!node_modules/'; echo ~/notes.md)\"",
+      },
+    },
+  },
 }
