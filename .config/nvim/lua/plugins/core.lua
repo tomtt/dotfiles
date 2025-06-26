@@ -75,4 +75,16 @@ return {
       },
     },
   },
+
+  -- Ensure code highlight to ruby, go and js
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "javascript",
+        "go",
+        "ruby",
+      },
+    },
+  },
 }
