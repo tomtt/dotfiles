@@ -64,7 +64,7 @@ return {
     },
   },
 
-  -- Ensure code highlight to ruby, go, js and helm charts
+  -- Ensure code highlight to ruby, go, js charts
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
@@ -72,7 +72,6 @@ return {
         "javascript",
         "go",
         "ruby",
-        "helm",
       },
     },
   },
