@@ -16,11 +16,17 @@ return {
   },
 
   -- Use tab instead of enter to select completion
+  -- Adds workaround on presets https://github.com/LazyVim/LazyVim/issues/6185#issuecomment-3026219392
   {
     "saghen/blink.cmp",
     opts = {
       keymap = {
         preset = "super-tab",
+        ["<Tab>"] = {
+          require("blink.cmp.keymap.presets").get("super-tab")["<Tab>"][1],
+          require("lazyvim.util.cmp").map({ "snippet_forward", "ai_accept" }),
+          "fallback",
+        },
       },
     },
   },
