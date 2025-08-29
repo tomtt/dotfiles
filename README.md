@@ -12,9 +12,8 @@ Also uses [Stow](https://www.gnu.org/software/stow/manual/stow.html) to easy kee
 
 ## Screenshots
 
-<img width="1448" alt="Screenshot 2024-04-21 at 11 25 24" src="https://github.com/muromeo1/dotfiles/assets/22664903/b82e0cdf-12ba-46dd-a94f-2b6e9e10830d">
-
-<img width="1452" alt="Screenshot 2024-04-21 at 11 27 45" src="https://github.com/user-attachments/assets/42499274-1fd3-4d6c-b641-b138c3a3ab4e">
+<img width="1913" height="1004" alt="image" src="https://github.com/user-attachments/assets/94ec633a-6eb0-4fac-b0ce-ed7b5303bb28" />
+<img width="1913" height="1005" alt="image" src="https://github.com/user-attachments/assets/5934c0c0-c811-4949-8641-88e6648381c0" />
 
 ## Installation
 
