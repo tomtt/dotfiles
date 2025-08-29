@@ -19,7 +19,8 @@ palette = 'catppuccin_mocha'
 
 [directory]
 style = 'bg:surface0'
-format = '[$path ]($style)[$read_only]($read_only_style)'
+format = '[$path ]($style)[$read_only]($style)'
+read_only = '🔒 '
 
 [git_branch]
 format = '[ $symbol$branch]($style)'

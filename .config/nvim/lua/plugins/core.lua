@@ -44,7 +44,7 @@ return {
   },
 
   -- Disable mini.pairs to use endwise instead
-  { "echasnovski/mini.pairs", enabled = false },
+  -- { "echasnovski/mini.pairs", enabled = true },
 
   -- Disable flash.nvim, really annoying
   { "folke/flash.nvim", enabled = false },
