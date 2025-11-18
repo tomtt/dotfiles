@@ -1,2 +1,4 @@
 .config/nvim/lazy-lock.json
 .config/github-copilot/
+lazy-lock.json
+undo
