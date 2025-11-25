@@ -1,0 +1,34 @@
+{
+  "app/views/components/*.rb": {
+    "type": "component",
+    "alternate": "test/components/{}_test.rb"
+  },
+  "test/components/*_test.rb": {
+    "type": "test",
+    "alternate": "app/views/components/{}.rb"
+  },
+  "app/models/*.rb": {
+    "type": "model",
+    "alternate": "test/models/{}_test.rb"
+  },
+  "app/lib/*.rb": {
+    "type": "lib",
+    "alternate": "test/lib/{}_test.rb"
+  },
+  "app/models/concerns/*.rb": {
+    "type": "concern",
+    "alternate": "test/models/concerns/{}_test.rb"
+  },
+  "test/models/concerns/*_test.rb": {
+    "type": "test",
+    "alternate": "app/models/concerns/{}.rb"
+  },
+  "test/models/*_test.rb": {
+    "type": "test",
+    "alternate": "app/models/{}.rb"
+  },
+  "test/lib/*_test.rb": {
+    "type": "test",
+    "alternate": "app/lib/{}.rb"
+  }
+}
