@@ -20,8 +20,11 @@ return {
         opts.desc = "Go to declaration"
         vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
 
-        opts.desc = "Show LSP definitions"
-        vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
+        vim.keymap.set("n", "gd", vim.lsp.buf.definition, { silent = true })
+        vim.keymap.set("n", "gr", vim.lsp.buf.references, { silent = true })
+
+        -- opts.desc = "Show LSP definitions"
+        -- vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
 
         opts.desc = "Show LSP implementations"
         vim.keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts)
@@ -78,7 +81,7 @@ return {
     local capabilities = cmp_nvim_lsp.default_capabilities()
 
     -- Global LSP settings (applied to all servers)
-    vim.lsp.config('*', {
+    vim.lsp.config("*", {
       capabilities = capabilities,
     })
 
@@ -164,6 +167,37 @@ return {
       },
     })
     vim.lsp.enable("ts_ls")
+
+    local lsp_capabilities = vim.tbl_deep_extend(
+      "force",
+      require("cmp_nvim_lsp").default_capabilities(),
+      require("lsp-file-operations").default_capabilities()
+    )
+    lsp_capabilities.workspace.didChangeWatchedFiles = {
+      dynamicRegistration = true,
+    }
+
+    vim.lsp.enable("ruby-lsp")
+    local function on_attach_lsp(client, bufnr)
+      if client.supports_method("textDocument/formatting") then
+        vim.api.nvim_create_autocmd("BufWritePre", {
+          group = vim.api.nvim_create_augroup("LspFormatOnSave", { clear = false }),
+          buffer = bufnr,
+          callback = function()
+            vim.lsp.buf.format({ bufnr = bufnr, async = false })
+          end,
+        })
+      end
+    end
+
+    vim.lsp.config("ruby-lsp", {
+      cmd = { vim.fn.expand("~/.rbenv/shims/ruby-lsp") },
+      root_dir = vim.fs.dirname(vim.fs.find({ "Gemfile", ".git" }, { upward = true })[1]),
+      filetypes = { "ruby", "erb", "rake" },
+      init_options = { formatter = "rubocop" },
+      capabilities = lsp_capabilities,
+      on_attach = on_attach_lsp,
+    })
 
     -- gopls
     vim.lsp.config("gopls", {
