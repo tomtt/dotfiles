@@ -1,0 +1,14 @@
+{
+    "name": "tomtt-snippets",
+    "engines": {
+        "vscode": "^1.11.0"
+    },
+    "contributes": {
+        "snippets": [
+            {
+                "language": "ruby",
+                "path": "./snippets/ruby.json"
+            }
+        ]
+    }
+}
