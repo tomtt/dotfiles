@@ -65,3 +65,8 @@ vim.keymap.set("n", "<leader>bp", function()
 	vim.fn.setreg("+", filePath) -- Copy the file path to the clipboard register
 	print("File path copied to clipboard: " .. filePath) -- Optional: print message to confirm
 end, { desc = "Copy file path to clipboard" })
+
+-- LSP code actions
+vim.keymap.set({ "n", "v" }, "<leader>ma", function()
+	vim.lsp.buf.code_action()
+end, { desc = "Code actions" })
