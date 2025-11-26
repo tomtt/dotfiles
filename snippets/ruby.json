@@ -1,0 +1,6 @@
+{
+    "binding.pry": {
+        "prefix": "bp",
+        "body": "binding.pry"
+    }
+}

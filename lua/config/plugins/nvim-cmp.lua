@@ -12,24 +12,30 @@ return {
 			version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
 			-- install jsregexp (optional!).
 			build = "make install_jsregexp",
-			config = function()
-				local ls = require("luasnip")
-				vim.keymap.set({ "i" }, "<C-K>", function()
-					ls.expand()
-				end, { silent = true })
-				vim.keymap.set({ "i", "s" }, "<C-L>", function()
-					ls.jump(1)
-				end, { silent = true })
-				vim.keymap.set({ "i", "s" }, "<C-J>", function()
-					ls.jump(-1)
-				end, { silent = true })
-
-				vim.keymap.set({ "i", "s" }, "<C-E>", function()
-					if ls.choice_active() then
-						ls.change_choice(1)
-					end
-				end, { silent = true })
-			end,
+			-- config = function()
+			-- 	local ls = require("luasnip")
+			-- 	vim.keymap.set({ "i" }, "<C-K>", function()
+			-- 		ls.expand()
+			-- 	end, { silent = true })
+			-- 	vim.keymap.set({ "i", "s" }, "<tab>", function()
+			-- 		ls.jump(1)
+			-- 	end, { silent = true })
+			-- 	vim.keymap.set({ "i", "s" }, "<s-tab>", function()
+			-- 		ls.jump(-1)
+			-- 	end, { silent = true })
+			-- 	vim.keymap.set({ "i", "s" }, "<C-N>", function()
+			-- 		ls.jump(1)
+			-- 	end, { silent = true })
+			-- 	vim.keymap.set({ "i", "s" }, "<C-P>", function()
+			-- 		ls.jump(-1)
+			-- 	end, { silent = true })
+			--
+			-- 	vim.keymap.set({ "i", "s" }, "<C-E>", function()
+			-- 		if ls.choice_active() then
+			-- 			ls.change_choice(1)
+			-- 		end
+			-- 	end, { silent = true })
+			-- end,
 		},
 		"saadparwaiz1/cmp_luasnip", -- autocompletion
 		"rafamadriz/friendly-snippets", -- snippets
@@ -217,7 +223,11 @@ return {
 		end
 
 		-- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
-		require("luasnip.loaders.from_vscode").lazy_load()
+		require("luasnip.loaders.from_vscode").lazy_load({})
+		require("luasnip.loaders.from_vscode").lazy_load({ paths = { vim.fn.stdpath("config") .. "/snippets" } })
+
+		-- add rails snippets to ruby
+		require("luasnip").filetype_extend("ruby", { "rails" })
 
 		cmp.setup({
 			experimental = {
@@ -283,14 +293,12 @@ return {
 
 				["<C-f>"] = cmp.mapping.scroll_docs(4),
 				["<C-b>"] = cmp.mapping.scroll_docs(-4),
-				["<C-j>"] = cmp.mapping(select_next_item),
-				["<C-k>"] = cmp.mapping(select_prev_item),
 				["<C-n>"] = cmp.mapping(select_next_item),
 				["<C-p>"] = cmp.mapping(select_prev_item),
 				["<Down>"] = cmp.mapping(select_next_item),
 				["<Up>"] = cmp.mapping(select_prev_item),
 
-				["<C-y>"] = cmp.mapping(function(fallback)
+				["<C-k>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
 						local entry = cmp.get_selected_entry()
 						confirm(entry)
