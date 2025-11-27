@@ -44,10 +44,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
--- Clear search highlight
-opts.desc = "Clear search highligh"
-vim.keymap.set("n", "<C-l>", vim.cmd.nohlsearch, opts)
-
 vim.keymap.set("v", "<leader>ej", ":m '>+1<CR>gv=gv", { desc = "move lines down in visual mode" })
 vim.keymap.set("v", "<leader>ek", ":m '<-2<CR>gv=gv", { desc = "move lines up in visual mode" })
 vim.keymap.set("n", "<leader>bf", vim.lsp.buf.format, { desc = "format buffer" })
