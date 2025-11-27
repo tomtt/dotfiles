@@ -66,3 +66,7 @@ end, { desc = "Copy file path to clipboard" })
 vim.keymap.set({ "n", "v" }, "<leader>ma", function()
 	vim.lsp.buf.code_action()
 end, { desc = "Code actions" })
+
+vim.keymap.set("n", "<M-t>", function()
+	print("Pressed <M-t>")
+end, { desc = "Test defining Alt mappings" })
