@@ -7,8 +7,8 @@ vim.keymap.set("n", "n", "nzzzv", { desc = "next find with aligned cursor" })
 vim.keymap.set("n", "N", "Nzzzv", { desc = "prev find with aligned cursor" })
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "open explorer" })
 vim.keymap.set("n", "<leader>s", vim.cmd.write, { desc = "write buffer" })
-vim.keymap.set("n", "<leader>pc", function()
-	ApplyColorscheme()
+vim.keymap.set("n", "<leader>ec", function()
+  ApplyColorscheme()
 end, { desc = "apply colorscheme and transparency" })
 
 -- <space><space> to swap alternate buffer
@@ -29,19 +29,19 @@ vim.keymap.set("n", "Q", "<nop>", { desc = "disable Q" })
 
 -- Replace the word cursor is on globally
 vim.keymap.set(
-	"n",
-	"<leader>es",
-	[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-	{ desc = "Replace word cursor is on globally" }
+  "n",
+  "<leader>es",
+  [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+  { desc = "Replace word cursor is on globally" }
 )
 
 -- Hightlight yanking
 vim.api.nvim_create_autocmd("TextYankPost", {
-	desc = "Highlight when yanking (copying) text",
-	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
-	callback = function()
-		vim.hl.on_yank()
-	end,
+  desc = "Highlight when yanking (copying) text",
+  group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+  callback = function()
+    vim.hl.on_yank()
+  end,
 })
 
 vim.keymap.set("v", "<leader>ej", ":m '>+1<CR>gv=gv", { desc = "move lines down in visual mode" })
@@ -57,16 +57,29 @@ vim.keymap.set("n", "<leader>bX", "<cmd>!chmod -x %<CR>", { silent = true, desc 
 
 -- Copy filepath to the clipboard
 vim.keymap.set("n", "<leader>bp", function()
-	local filePath = vim.fn.expand("%:~") -- Gets the file path relative to the home directory
-	vim.fn.setreg("+", filePath) -- Copy the file path to the clipboard register
-	print("File path copied to clipboard: " .. filePath) -- Optional: print message to confirm
+  local filePath = vim.fn.expand("%:~")
+  vim.fn.setreg("+", filePath)
+  print("File path copied to clipboard: " .. filePath)
 end, { desc = "Copy file path to clipboard" })
 
 -- LSP code actions
 vim.keymap.set({ "n", "v" }, "<leader>ma", function()
-	vim.lsp.buf.code_action()
+  vim.lsp.buf.code_action()
 end, { desc = "Code actions" })
 
+-- Spelling
+vim.keymap.set("n", "<leader>zn", function()
+  vim.opt_local.spelllang = "nl"
+  vim.opt_local.spell = true
+end, { desc = "Enable NL spelling" })
+vim.keymap.set("n", "<leader>ze", function()
+  vim.opt_local.spelllang = "en"
+  vim.opt_local.spell = true
+end, { desc = "Enable EN spelling" })
+vim.keymap.set("n", "<leader>zz", function()
+  vim.opt_local.spell = false
+end, { desc = "Disable spelling" })
+
 vim.keymap.set("n", "<M-t>", function()
-	print("Pressed <M-t>")
+  print("Pressed <M-t>")
 end, { desc = "Test defining Alt mappings" })
