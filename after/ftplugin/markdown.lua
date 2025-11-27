@@ -1,6 +1,6 @@
 local set = vim.opt_local
 
-set.textwidth = 80 -- move text to new line at 80 characters
+set.textwidth = 130 -- move text to new line at 80 characters
 set.spell = true -- Enable spell checking
 set.linebreak = true
 
@@ -87,6 +87,44 @@ function ToggleBulletVisualSelection()
 	end
 
 	vim.fn.setline(start_line, lines)
+end
+
+-- Increase bullet level for Current Line (Normal Mode)
+function IncreaseBulletLevelCurrentLine()
+	local line_num = vim.fn.line(".")
+	local line = vim.fn.getline(line_num)
+
+	if line:match("^%s*[%-%*%+]%s") then
+		-- Increase spaces before bullet
+		line = "  " .. line
+		print("✓ Bullet level increased")
+	else
+		-- Add bullet
+		if not line:match("^%s*%d+%.%s") then
+			line = "- " .. line
+			print("✓ Bullet added")
+		end
+	end
+
+	vim.fn.setline(line_num, line)
+end
+
+-- Decrease bullet level for Current Line (Normal Mode)
+function DecreaseBulletLevelCurrentLine()
+	local line_num = vim.fn.line(".")
+	local line = vim.fn.getline(line_num)
+
+	if line:match("^%s%s%s*[%-%*%+]%s") then
+		-- Decrease spaces before bullet
+		line = line:gsub("^%s%s", "")
+		print("✓ Bullet level decreased")
+	else
+		-- Remove bullet
+		line = line:gsub("^(%s*)[%-%*%+]%s*", "%1")
+		print("✓ Bullet removed")
+	end
+
+	vim.fn.setline(line_num, line)
 end
 
 -- Toggle Bullet Points for Current Line (Normal Mode)
@@ -428,3 +466,13 @@ vim.cmd(
 vim.cmd(
 	string.format([[highlight @markup.heading.6.markdown cterm=bold gui=bold guifg=%s guibg=%s]], color_fg, color6_bg)
 )
+
+vim.keymap.set("n", "<Right>", IncreaseBulletLevelCurrentLine, {
+	desc = "Increase bullet indentation level",
+	buffer = true,
+})
+
+vim.keymap.set("n", "<Left>", DecreaseBulletLevelCurrentLine, {
+	desc = "Decrease bullet indentation level",
+	buffer = true,
+})
