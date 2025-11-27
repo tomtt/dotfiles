@@ -22,14 +22,14 @@ opt.title = true
 opt.autoread = true
 opt.updatetime = 500
 
-opt.backspace = indent, eol, start
+opt.backspace = [[indent,eol,start]]
 
 opt.history = 100 -- keep 100 lines of command line history
 opt.ruler = true -- show the cursor position all the time
 opt.showcmd = true -- display incomplete commands
 opt.incsearch = true -- do incremental searching
 
-opt.mouse = ch
+opt.mouse = [[ch]]
 
 opt.showmatch = true -- show matching parenthesis
 
@@ -56,7 +56,7 @@ opt.startofline = false
 
 opt.clipboard:append("unnamedplus")
 
-opt.formatoptions = croqj
+opt.formatoptions = [[croqj]]
 
 opt.undofile = true
 opt.undodir = ".vim_undo"
