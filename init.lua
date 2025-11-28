@@ -1,4 +1,5 @@
 require("config.core")
 require("config.lazy")
 require("config.core.operations")
+require("config.core.utils")
 require("current-theme")
