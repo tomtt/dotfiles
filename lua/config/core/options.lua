@@ -24,9 +24,9 @@ opt.updatetime = 500
 
 opt.backspace = [[indent,eol,start]]
 
-opt.history = 100 -- keep 100 lines of command line history
-opt.ruler = true -- show the cursor position all the time
-opt.showcmd = true -- display incomplete commands
+opt.history = 100    -- keep 100 lines of command line history
+opt.ruler = true     -- show the cursor position all the time
+opt.showcmd = true   -- display incomplete commands
 opt.incsearch = true -- do incremental searching
 
 opt.mouse = [[ch]]
@@ -66,7 +66,7 @@ opt.textwidth = 130
 -- <C-w>c sets width window to textwidth (value >130 because of line number column)
 vim.keymap.set("n", "<C-w>f", "136<C-w>|", { desc = "set window width to fit max length code lines" })
 
-opt.scrolloff = 8
+opt.scrolloff = 2
 opt.signcolumn = "yes"
 opt.backspace = { "start", "eol", "indent" }
 opt.updatetime = 50
