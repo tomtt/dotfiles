@@ -1,8 +1,12 @@
 local set = vim.opt_local
 
-set.textwidth = 130 -- move text to new line at 80 characters
-set.spell = true    -- Enable spell checking
+set.textwidth = 0
+set.spell = true -- Enable spell checking
 set.linebreak = true
+set.wrap = true
+set.breakat = " \t"
+vim.cmd("Wrapwidth 0")
+set.formatoptions = "j"
 
 -- Toggle Line Numbers (Visual Selection)
 function ToggleNumberVisualSelection()
@@ -101,7 +105,7 @@ function IncreaseBulletLevelCurrentLine()
   else
     -- Add bullet
     if not line:match("^%s*%d+%.%s") then
-      line = "- " .. line
+      line = "* " .. line
       print("✓ Bullet added")
     end
   end
@@ -217,11 +221,11 @@ function ToggleTaskStateVisualSelection()
   local changed = 0
 
   for i = 1, #lines do
-    if lines[i]:match("^%s*%-%s*%[ %]") then
+    if lines[i]:match("^%s*[%-%*%+]%s*%[ %]") then
       -- Mark as done
       lines[i] = lines[i]:gsub("(%[) (])", "%1x%2")
       changed = changed + 1
-    elseif lines[i]:match("^%s*%-%s*%[x%]") or lines[i]:match("^%s*%-%s*%[X%]") then
+    elseif lines[i]:match("^%s*[%-%*%+]%s*%[x%]") or lines[i]:match("^%s*%-%s*%[X%]") then
       -- Mark as undone
       lines[i] = lines[i]:gsub("(%[)[xX](])", "%1 %2")
       changed = changed + 1
@@ -241,11 +245,11 @@ function ToggleTaskStateCurrentLine()
   local line_num = vim.fn.line(".")
   local line = vim.fn.getline(line_num)
 
-  if line:match("^%s*%-%s*%[ %]") then
+  if line:match("^%s*[%-%*%+]%s*%[ %]") then
     -- Mark as done
     line = line:gsub("(%[) (])", "%1x%2")
     print("✓ Task completed")
-  elseif line:match("^%s*%-%s*%[x%]") or line:match("^%s*%-%s*%[X%]") then
+  elseif line:match("^%s*[%%*%+-]%s*%[x%]") or line:match("^%s*[%-%*%+]%s*%[X%]") then
     -- Mark as undone
     line = line:gsub("(%[)[xX](])", "%1 %2")
     print("○ Task reopened")
