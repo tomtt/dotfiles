@@ -25,6 +25,14 @@ return {
             ["<C-j>"] = actions.move_selection_next,
           },
         },
+        layout_strategy = "horizontal",
+        layout_config = {
+          horizontal = {
+            -- make the preview (code) window ~130 columns wide
+            preview_width = 130,
+          },
+          width = 0.95,
+        },
       },
       extensions = {
         themes = {
