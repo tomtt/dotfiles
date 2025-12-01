@@ -1,4 +1,5 @@
 local set = vim.opt_local
+local bullet_char = '*'
 
 set.textwidth = 0
 set.spell = true -- Enable spell checking
@@ -84,7 +85,7 @@ function ToggleBulletVisualSelection()
     for i = 1, #lines do
       -- Only add bullet if line isn't already a bullet or checkbox
       if not lines[i]:match("^%s*[%-%*%+]%s") and not lines[i]:match("^%s*%d+%.%s") then
-        lines[i] = "- " .. lines[i]
+        lines[i] = bullet_char .. " " .. lines[i]
       end
     end
     print("✓ Bullets added")
@@ -137,7 +138,7 @@ function IncreaseBulletLevelCurrentLine()
   else
     -- Add bullet
     if not line:match("^%s*%d+%.%s") then
-      line = "* " .. line
+      line = bullet_char .. " " .. line
       print("✓ Bullet added")
     end
   end
@@ -175,7 +176,7 @@ function ToggleBulletCurrentLine()
   else
     -- Add bullet
     if not line:match("^%s*%d+%.%s") then
-      line = "* " .. line
+      line = bullet_char .. " " .. line
       print("✓ Bullet added")
     end
   end
@@ -212,7 +213,7 @@ function ToggleCheckboxVisualSelection()
         lines[i] = lines[i]:gsub("^(%s*[%-%*%+])%s*", "%1 [ ] ")
       elseif not lines[i]:match("^%s*$") then
         -- Add checkbox with bullet to non-empty lines
-        lines[i] = "* [ ] " .. lines[i]
+        lines[i] = bullet_char .. " [ ] " .. lines[i]
       end
     end
     print("✓ Checkboxes added")
@@ -237,7 +238,7 @@ function ToggleCheckboxCurrentLine()
       line = line:gsub("^(%s*[%-%*%+])%s*", "%1 [ ] ")
     elseif not line:match("^%s*$") then
       -- Add checkbox with bullet to non-empty line
-      line = "* [ ] " .. line
+      line = bullet_char .. " [ ] " .. line
     end
     print("✓ Checkbox added")
   end
