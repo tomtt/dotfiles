@@ -1,5 +1,6 @@
-require("config.core")
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 require("config.lazy")
-require("config.core.operations")
-require("config.core.utils")
+require("config.core")
 require("current-theme")
