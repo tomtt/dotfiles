@@ -1,3 +1,6 @@
-require('config.core.remap')
 require('config.core.options')
+require("config.core.operations")
+require("config.core.utils")
 require('config.core.theme')
+require("config.core.utils")
+require('config.core.remap')

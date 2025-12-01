@@ -1,8 +1,5 @@
 local opts = { noremap = true, silent = true }
 
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
 vim.keymap.set("n", "n", "nzzzv", { desc = "next find with aligned cursor" })
 vim.keymap.set("n", "N", "Nzzzv", { desc = "prev find with aligned cursor" })
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "open explorer" })
