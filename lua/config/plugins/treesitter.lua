@@ -9,14 +9,14 @@ return {
 
       -- configure treesitter
       treesitter.setup({ -- enable syntax highlighting
-        highlight = {
+        highlight                         = {
           enable = true,
         },
         -- enable indentation
-        indent = { enable = true },
+        indent                            = { enable = true },
 
         -- ensure these languages parsers are installed
-        ensure_installed = {
+        ensure_installed                  = {
           "json",
           "javascript",
           "typescript",
@@ -45,15 +45,31 @@ return {
           "ron",
           "ruby",
         },
-        incremental_selection = {
+        incremental_selection             = {
           enable = true,
           keymaps = {
             init_selection = "<C-space>",
             node_incremental = "<C-space>",
             scope_incremental = false,
+            node_decremental = "<bs>",
           },
         },
         additional_vim_regex_highlighting = false,
+        textobjects                       = {
+          select = {
+            enable = true,
+            lookahead = true,
+            keymaps = {
+              ["im"] = "@function.inner", -- method inner
+              ["am"] = "@function.outer", -- method outer
+              ["iM"] = "@class.inner",
+              ["aM"] = "@class.outer",
+              ["ir"] = "@block.inner",
+              ["ar"] = "@block.outer",
+            },
+          },
+        },
+
       })
     end,
   },
@@ -66,8 +82,8 @@ return {
       -- Independent nvim-ts-autotag setup
       require("nvim-ts-autotag").setup({
         opts = {
-          enable_close = true,      -- Auto-close tags
-          enable_rename = true,     -- Auto-rename pairs
+          enable_close = true,           -- Auto-close tags
+          enable_rename = true,          -- Auto-rename pairs
           enable_close_on_slash = false, -- Disable auto-close on trailing `</`
         },
         per_filetype = {
@@ -81,4 +97,7 @@ return {
       })
     end,
   },
+  {
+    'nvim-treesitter/nvim-treesitter-textobjects'
+  }
 }
