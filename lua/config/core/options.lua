@@ -47,7 +47,7 @@ opt.smartindent = true
 opt.lazyredraw = true -- prevent redraws while executing
 
 opt.list = true
-opt.listchars = { tab = ".┈", multispace = "￮", extends = "▶", precedes = "◀", nbsp = "‿" }
+opt.listchars = { tab = "┊┈", extends = "▶", precedes = "◀", nbsp = "‿" }
 opt.joinspaces = false
 
 opt.startofline = false
