@@ -80,3 +80,19 @@ end, { desc = "Disable spelling" })
 vim.keymap.set("n", "<M-t>", function()
   print("Pressed <M-t>")
 end, { desc = "Test defining Alt mappings" })
+
+vim.keymap.set("n", "<leader>zm", function()
+  local ts = vim.treesitter
+  local node = (ts.get_node and ts.get_node({})) -- Neovim ≥0.10
+      or require("nvim-treesitter.ts_utils").get_node_at_cursor()
+  while node do
+    local t = node:type()
+    if t == "method" or t == "singleton_method" then
+      local srow = node:range() -- start_row
+      vim.api.nvim_win_set_cursor(0, { srow + 1, 0 })
+      vim.cmd("normal! zc")
+      return
+    end
+    node = node:parent()
+  end
+end, { desc = "Fold current method" })

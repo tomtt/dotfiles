@@ -71,3 +71,9 @@ opt.signcolumn = "yes"
 opt.backspace = { "start", "eol", "indent" }
 opt.updatetime = 50
 vim.g.editorconfig = true
+
+-- Treesitter folds
+opt.foldmethod = "expr"
+opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+opt.foldlevelstart = 99
+opt.foldenable = true
