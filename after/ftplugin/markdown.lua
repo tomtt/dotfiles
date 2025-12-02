@@ -93,6 +93,38 @@ function ToggleBulletVisualSelection()
   vim.fn.setline(start_line, lines)
 end
 
+function IncreaseBulletLevelVisual()
+  local start_line = vim.fn.line("'<")
+  local end_line = vim.fn.line("'>")
+  local lines = vim.fn.getline(start_line, end_line)
+
+  for i = 1, #lines do
+    if lines[i]:match("^%s*[%-%*%+]%s") then
+      lines[i] = "  " .. lines[i]
+    else
+      lines[i] = bullet_char .. " " .. lines[i]
+    end
+  end
+
+  vim.fn.setline(start_line, lines)
+end
+
+function DecreaseBulletLevelVisual()
+  local start_line = vim.fn.line("'<")
+  local end_line = vim.fn.line("'>")
+  local lines = vim.fn.getline(start_line, end_line)
+
+  for i = 1, #lines do
+    if lines[i]:match("^%s*[%-%*%+]%s") then
+      lines[i] = lines[i]:gsub("^%s%s", "")
+    else
+      lines[i] = lines[i]:gsub("^(%s*)[%-%*%+]%s*", "%1")
+    end
+  end
+
+  vim.fn.setline(start_line, lines)
+end
+
 -- Increase bullet level for Current Line (Normal Mode)
 function IncreaseBulletLevelCurrentLine()
   local line_num = vim.fn.line(".")
@@ -472,11 +504,21 @@ vim.cmd(
 )
 
 vim.keymap.set("n", "<Right>", IncreaseBulletLevelCurrentLine, {
-  desc = "Increase bullet indentation level",
+  desc = "Increase bullet indentation level on current line",
+  buffer = true,
+})
+
+vim.keymap.set("v", "<Right>", IncreaseBulletLevelVisual, {
+  desc = "Increase bullet indentation level on selected lines",
   buffer = true,
 })
 
 vim.keymap.set("n", "<Left>", DecreaseBulletLevelCurrentLine, {
-  desc = "Decrease bullet indentation level",
+  desc = "Decrease bullet indentation level on current line",
+  buffer = true,
+})
+
+vim.keymap.set("v", "<Left>", DecreaseBulletLevelVisual, {
+  desc = "Decrease bullet indentation level on selected lines",
   buffer = true,
 })
