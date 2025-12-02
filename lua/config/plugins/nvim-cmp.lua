@@ -212,7 +212,10 @@ return {
         ghost_text = false,
       },
       completion = {
-        completeopt = "menu,menuone,noinsert",
+        -- completeopt = "menu,menuone,noinsert",
+        -- completeopt = "menu,menuone,noinsert,preinsert,preview",
+        -- completeopt = "menu,menuone,preview,noselect",
+        completeopt = "menu,menuone,preview",
       },
       window = {
         documentation = {
@@ -358,7 +361,7 @@ return {
 
           -- use lspkind and tailwindcss-colorizer-cmp for additional formatting
           vim_item = lspkind.cmp_format({
-            maxwidth = 25,
+            maxwidth = 50,
             ellipsis_char = "...",
           })(entry, vim_item)
 
