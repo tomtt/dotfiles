@@ -1,6 +1,21 @@
 {
-    "binding.pry": {
-        "prefix": "bp",
-        "body": "binding.pry"
-    }
+  "binding.pry": {
+    "prefix": "bp",
+    "body": "binding.pry"
+  },
+  "assert_equal": {
+    "prefix": "ase",
+    "body": "assert_equal ${1:expected}, ${2:actual}, '${3:message}'\n$0",
+    "description": "Mini test assert_equal"
+  },
+  "mini_test_test": {
+    "prefix": "te",
+    "body": "test '${1:}' do\n  ${2:}$0\nend\n",
+    "description": "Mini test test"
+  },
+  "test_create_record": {
+    "prefix": "cr",
+    "body": "${1:} = create(:${1:})",
+    "description": "assign created record"
+  }
 }
