@@ -168,6 +168,8 @@ return {
     })
     vim.lsp.enable("ts_ls")
 
+    vim.lsp.enable("jsonls")
+
     local lsp_capabilities = vim.tbl_deep_extend(
       "force",
       require("cmp_nvim_lsp").default_capabilities(),
