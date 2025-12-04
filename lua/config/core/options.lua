@@ -22,8 +22,6 @@ opt.title = true
 opt.autoread = true
 opt.updatetime = 500
 
-opt.backspace = [[indent,eol,start]]
-
 opt.history = 100    -- keep 100 lines of command line history
 opt.ruler = true     -- show the cursor position all the time
 opt.showcmd = true   -- display incomplete commands
