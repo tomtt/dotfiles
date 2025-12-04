@@ -89,7 +89,7 @@ return {
     vim.keymap.set("n", "<leader>ft", builtin.treesitter, { desc = "Telescope treesitter" })
     vim.keymap.set("n", "<leader>fT", vim.cmd.TodoTelescope, { desc = "Telescope todos" })
     vim.keymap.set("n", "<leader>fv", builtin.vim_options, { desc = "Telescope vim options" })
-    vim.keymap.set("n", "<leader>fy", builtin.filetypes, { desc = "Telescope file types" })
+    vim.keymap.set("n", "<leader>fY", builtin.filetypes, { desc = "Telescope file types" })
     vim.keymap.set("n", "<leader>fz", builtin.spell_suggest, { desc = "Telescope spelling suggestions" })
     vim.keymap.set("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", { desc = "Fuzzy find recent files" })
     vim.keymap.set("n", "<leader>fW", function()
