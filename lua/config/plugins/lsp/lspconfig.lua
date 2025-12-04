@@ -170,6 +170,13 @@ return {
 
     vim.lsp.enable("jsonls")
 
+    vim.lsp.config('cucumber-language-server', {
+      filetypes = { "cucumber", "gherkin" },
+      root_dir = vim.fs.dirname(vim.fs.find({ "Gemfile", ".git" }, { upward = true })[1]),
+      cmd = { "cucumber-language-server", "--stdio" },
+    })
+    vim.lsp.enable("cucumber-language-server")
+
     local lsp_capabilities = vim.tbl_deep_extend(
       "force",
       require("cmp_nvim_lsp").default_capabilities(),
