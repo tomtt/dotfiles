@@ -236,8 +236,19 @@ return {
         { name = "luasnip" }, -- snippets
         { name = "lazydev" },
         { name = "nvim_lsp" },
-        { name = "buffer" }, -- text within current buffer
-        { name = "path" },   -- file system paths
+        {
+          name = "buffer",
+          option = {
+            get_bufnrs = function()
+              local bufs = {}
+              for _, win in ipairs(vim.api.nvim_list_wins()) do
+                bufs[vim.api.nvim_win_get_buf(win)] = true
+              end
+              return vim.tbl_keys(bufs)
+            end
+          }
+        },
+        { name = "path" }, -- file system paths
         { name = "tailwindcss-colorizer-cmp" },
         {
           name = "spell", -- for markdown spellchecks completions
