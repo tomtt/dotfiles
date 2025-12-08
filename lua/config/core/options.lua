@@ -75,3 +75,5 @@ opt.foldmethod = "expr"
 opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 opt.foldlevelstart = 99
 opt.foldenable = true
+
+vim.o.winborder = 'rounded'
