@@ -124,10 +124,10 @@ return {
       miniSplitJoin.setup({
         mappings = { toggle = "" }, -- Disable default mapping
       })
-      vim.keymap.set({ "n", "x" }, "<leader>eJ", function()
+      vim.keymap.set({ "n", "x" }, "<leader>mJ", function()
         miniSplitJoin.join()
       end, { desc = "Join arguments (mini)" })
-      vim.keymap.set({ "n", "x" }, "<leader>eS", function()
+      vim.keymap.set({ "n", "x" }, "<leader>mS", function()
         miniSplitJoin.split()
       end, { desc = "Split arguments (mini)" })
     end,
