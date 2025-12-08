@@ -7,6 +7,8 @@ vim.keymap.set("n", "<leader>s", vim.cmd.write, { desc = "write buffer" })
 vim.keymap.set("n", "<leader>ec", function()
   ApplyColorscheme()
 end, { desc = "apply colorscheme and transparency" })
+vim.keymap.set("n", "<leader>eR", ":source " .. vim.fn.stdpath("config") .. '/lua/config/core/remap.lua<cr>',
+  { desc = 'Resource remap.lua' })
 
 -- <space><space> to swap alternate buffer
 vim.keymap.set("n", "<leader><leader>", "<c-^>", { desc = "swap to alternate buffer" })
