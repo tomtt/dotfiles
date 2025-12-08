@@ -5,8 +5,8 @@ return {
   config = function()
     require("treesj").setup({ use_default_keymaps = false })
 
-    vim.keymap.set("n", "<leader>et", require("treesj").toggle, { desc = "Split/Join toggle" })
-    vim.keymap.set("n", "<leader>ej", require("treesj").join, { desc = "Join" })
-    vim.keymap.set("n", "<leader>ex", require("treesj").split, { desc = "Split" })
+    vim.keymap.set("n", "<leader>mt", require("treesj").toggle, { desc = "Split/Join toggle" })
+    vim.keymap.set("n", "<leader>mj", require("treesj").join, { desc = "Join" })
+    vim.keymap.set("n", "<leader>ms", require("treesj").split, { desc = "Split" })
   end,
 }

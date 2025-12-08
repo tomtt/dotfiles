@@ -27,7 +27,7 @@ vim.keymap.set("n", "Q", "<nop>", { desc = "disable Q" })
 -- Replace the word cursor is on globally
 vim.keymap.set(
   "n",
-  "<leader>es",
+  "<leader>mr",
   [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
   { desc = "Replace word cursor is on globally" }
 )
