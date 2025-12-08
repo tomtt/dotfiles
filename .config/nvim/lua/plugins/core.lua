@@ -15,6 +15,16 @@ return {
     end,
   },
 
+  -- Use tab instead of enter to select completion
+  {
+    "saghen/blink.cmp",
+    opts = {
+      keymap = {
+        preset = "super-tab",
+      },
+    },
+  },
+
   -- Disable mini.pairs to use endwise instead
   -- { "echasnovski/mini.pairs", enabled = true },
 
