@@ -61,7 +61,49 @@ return {
       builtin.current_buffer_fuzzy_find,
       { desc = "Telescope current buffer fuzzy find" }
     )
-    vim.keymap.set("n", "<leader>fc", vim.cmd.cclose, { desc = "Close quickfix window" })
+
+    local function toggle_qf()
+      -- Check if any window is a quickfix window
+      local qf_exists = false
+      for _, win in ipairs(vim.fn.getwininfo()) do
+        if win.quickfix == 1 and win.loclist == 0 then
+          qf_exists = true
+          break
+        end
+      end
+
+      if qf_exists then
+        vim.cmd("cclose")
+        vim.cmd("lclose")
+      else
+        vim.cmd("lclose")
+        vim.cmd("copen")
+      end
+    end
+
+    local function toggle_loclist()
+      local ll_exists = false
+
+      for _, win in ipairs(vim.fn.getwininfo()) do
+        -- loclist windows have: quickfix = 1 AND loclist = 1
+        if win.quickfix == 1 and win.loclist == 1 then
+          ll_exists = true
+          break
+        end
+      end
+
+      if ll_exists then
+        vim.cmd("lclose")
+        vim.cmd("cclose")
+      else
+        vim.cmd("cclose")
+        vim.cmd("lopen")
+      end
+    end
+
+    vim.keymap.set("n", "<leader>fc", toggle_qf, { desc = "Toggle quickfix window" })
+    vim.keymap.set("n", "<leader>fl", toggle_loclist, { desc = "Toggle location list" })
+
     vim.keymap.set("n", "<leader>fF", builtin.find_files, { desc = "Telescope find files" })
     vim.keymap.set("n", "<leader>ff", builtin.git_files, { desc = "Telescope find git files" })
     vim.keymap.set(
@@ -76,7 +118,7 @@ return {
     vim.keymap.set("n", "<leader>fH", builtin.help_tags, { desc = "Telescope help tags" })
     vim.keymap.set("n", "<leader>fj", builtin.jumplist, { desc = "Telescope jumplist" })
     vim.keymap.set("n", "<leader>fK", builtin.keymaps, { desc = "Telescope keymaps" })
-    vim.keymap.set("n", "<leader>fl", builtin.lsp_document_symbols, { desc = "Telescope methods" })
+    vim.keymap.set("n", "<leader>fd", builtin.lsp_document_symbols, { desc = "Telescope method definitions" })
     vim.keymap.set("n", "<leader>fL", builtin.colorscheme, { desc = "Telescope colorscheme" })
     vim.keymap.set("n", "<leader>fm", builtin.man_pages, { desc = "Telescope man pages" })
     vim.keymap.set("n", "<leader>fM", builtin.marks, { desc = "Telescope marks" })
