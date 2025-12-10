@@ -87,6 +87,21 @@ vim.keymap.set("n", "<leader>tt", function()
   vim.api.nvim_win_set_cursor(win, { vim.api.nvim_buf_line_count(0), 0 })
 end, { desc = "Run test command in terminal", })
 
+vim.keymap.set("n", "<leader>tc", function()
+  -- build the test command based on file name and line number
+  local test_cmd = "\nquit\nSIMPLECOV=1 SIMPLECOV_CHECK_MIN_COVERAGE=true bundle exec rails test br " ..
+      vim.fn.expand('%') .. "\n"
+
+  -- switch to the terminal window and write the test command to it
+  switch_to_term_or_open()
+  local chan_id = vim.b.terminal_job_id
+  vim.api.nvim_chan_send(chan_id, test_cmd)
+
+  -- scroll to the bottom of the terminal
+  local win = vim.api.nvim_get_current_win()
+  vim.api.nvim_win_set_cursor(win, { vim.api.nvim_buf_line_count(0), 0 })
+end, { desc = "Run coverage for current test in terminal", })
+
 vim.keymap.set("n", "<leader>bt", function()
   local test_cmd = 'br test ' .. vim.fn.expand('%') .. ':' .. vim.fn.line('.') .. "\n"
   PrintAndWriteToClipboard(test_cmd)
