@@ -55,11 +55,16 @@ return {
   },
 
   -- Disable snacks.nvim scroll animation
+  -- Enable image preview
   {
     "folke/snacks.nvim",
     opts = {
       scroll = {
         enabled = false,
+      },
+      image = {
+        enabled = true,
+        backend = "kitty",
       },
     },
   },
@@ -72,6 +77,14 @@ return {
         "javascript",
         "go",
         "ruby",
+        "css",
+        "latex",
+        "norg",
+        "scss",
+        "svelte",
+        "typst",
+        "vue",
+        "norg`",
       },
     },
   },
