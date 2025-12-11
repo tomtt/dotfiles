@@ -41,6 +41,35 @@ vim.keymap.set(
   { desc = "Replace rocket hash notations in selection with symbol without confirmation" }
 )
 
+local replace_to_symbol_index = "/\\v\\['([a-z_]{-})'\\]/[:\\1]/g"
+vim.keymap.set(
+  "n",
+  "<leader>ey",
+  ":%s" .. replace_to_symbol_index .. "c<cr>",
+  { desc = "Replace indexing with string with symbol with confirmation" }
+)
+
+vim.keymap.set(
+  "n",
+  "<leader>eY",
+  ":%s" .. replace_to_symbol_index .. "<cr>",
+  { desc = "Replace indexing with string with symbol without confirmation" }
+)
+
+vim.keymap.set(
+  "v",
+  "<leader>ey",
+  ":s" .. replace_to_symbol_index .. "c<cr>",
+  { desc = "Replace indexing with string with symbol in selection with confirmation" }
+)
+
+vim.keymap.set(
+  "v",
+  "<leader>eY",
+  ":s" .. replace_to_symbol_index .. "<cr>",
+  { desc = "Replace indexing with string with symbol in selection without confirmation" }
+)
+
 function ApplyColorscheme(color)
   color = color or 'tokyonight-night'
   vim.cmd.colorscheme(color)
