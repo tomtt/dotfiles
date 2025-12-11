@@ -11,6 +11,36 @@ vim.keymap.set(
   { desc = "Strike through selected wiki items" }
 )
 
+local hash_rocket_replace = "/\\v(['\"])([a-z0-9_]{-})\\1\\s*\\=\\>/\\2:/g"
+
+vim.keymap.set(
+  "n",
+  "<leader>eh",
+  ":%s" .. hash_rocket_replace .. "c<cr>",
+  { desc = "Replace rocket hash notations in buffer with symbol with confirmation" }
+)
+
+vim.keymap.set(
+  "n",
+  "<leader>eH",
+  ":%s" .. hash_rocket_replace .. "<cr>",
+  { desc = "Replace rocket hash notations in buffer with symbol without confirmation" }
+)
+
+vim.keymap.set(
+  "v",
+  "<leader>eh",
+  ":s" .. hash_rocket_replace .. "c<cr>",
+  { desc = "Replace rocket hash notations in selection with symbol with confirmation" }
+)
+
+vim.keymap.set(
+  "v",
+  "<leader>eH",
+  ":s" .. hash_rocket_replace .. "<cr>",
+  { desc = "Replace rocket hash notations in selection with symbol without confirmation" }
+)
+
 function ApplyColorscheme(color)
   color = color or 'tokyonight-night'
   vim.cmd.colorscheme(color)
