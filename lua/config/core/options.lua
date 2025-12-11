@@ -62,7 +62,7 @@ opt.undodir = ".vim_undo"
 opt.colorcolumn = "131"
 opt.textwidth = 130
 -- <C-w>c sets width window to textwidth (value >130 because of line number column)
-vim.keymap.set("n", "<C-w>f", "136<C-w>|", { desc = "set window width to fit max length code lines" })
+vim.keymap.set("n", "<C-w>f", "137<C-w>|", { desc = "set window width to fit max length code lines" })
 
 opt.scrolloff = 2
 opt.signcolumn = "yes"
