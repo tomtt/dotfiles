@@ -1,0 +1,8 @@
+# BEGIN_KITTY_THEME
+# Kibble
+# include current-theme.conf
+# include tomtt/theme.conf
+# END_KITTY_THEME
+# include tomtt/tomtt.conf
+
+globinclude tomtt/**/*.conf
