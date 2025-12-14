@@ -10,7 +10,8 @@ plug "zap-zsh/supercharge"
 plug "zap-zsh/zap-prompt"
 plug "zsh-users/zsh-syntax-highlighting"
 plug "wintermi/zsh-starship"
-plug "chivalryq/git-alias"
+# plug "chivalryq/git-alias"
+plug "jeffreytse/zsh-vi-mode"
 
 alias bex='bundle exec'
 alias rc='bex rails c'
@@ -23,8 +24,11 @@ if type rg &> /dev/null; then
 	export FZF_DEFAULT_OPTS='-m --height 50% --border'
 fi
 
+ZVM_SYSTEM_CLIPBOARD_ENABLED=true
+ZVM_VI_INSERT_ESCAPE_BINDKEY=kj
+
 # Ctrl + space to clear screen
-bindkey '^ ' clear-screen
+# bindkey '^ ' clear-screen
 
 export EDITOR=nvim
 export FZF_CTRL_R_OPTS="
@@ -42,3 +46,13 @@ source <(fzf --zsh)
 autoload -Uz compinit
 compinit
 
+# enable vim-style editing mode
+bindkey -v
+# esc with homerow keys out of insert mode
+# bindkey -M viins 'kj' vi-cmd-mode
+# Ensure ^J is not bound since it is my tmux prefix
+bindkey -r "^J"
+
+source ~/dotfiles/shell-setup.sh
+source ~/dotfiles/aliases.sh
+source ~/dotfiles/git-aliases.sh
