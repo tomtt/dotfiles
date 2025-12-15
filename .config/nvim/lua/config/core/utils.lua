@@ -102,6 +102,17 @@ vim.keymap.set("n", "<leader>tc", function()
   vim.api.nvim_win_set_cursor(win, { vim.api.nvim_buf_line_count(0), 0 })
 end, { desc = "Run coverage for current test in terminal", })
 
+vim.keymap.set("n", "<leader>tr", function()
+  switch_to_term_or_open()
+  local chan_id = vim.b.terminal_job_id
+  vim.api.nvim_chan_send(chan_id, "\n")
+
+  -- scroll to the bottom of the terminal
+  local win = vim.api.nvim_get_current_win()
+  vim.api.nvim_win_set_cursor(win, { vim.api.nvim_buf_line_count(0), 0 })
+  vim.cmd("b#")
+end, { desc = "Send a return to terminal" })
+
 vim.keymap.set("n", "<leader>bt", function()
   local test_cmd = 'br test ' .. vim.fn.expand('%') .. ':' .. vim.fn.line('.') .. "\n"
   PrintAndWriteToClipboard(test_cmd)
