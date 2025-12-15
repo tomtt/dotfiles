@@ -19,6 +19,7 @@ $nodejs\
 $kubernetes\
 [](bg:yellow fg:blue)\
 $jobs\
+$cmd_duration\
 [](fg:yellow)
 $character\
 """
@@ -73,6 +74,10 @@ detect_files = ['package.json']
 style = 'bg:yellow fg:surface0'
 format = '[ $symbol$number]($style)'
 number_threshold = 1
+
+[cmd_duration]
+format = '[ took $duration ]($style)'
+style = 'bg:yellow fg:surface0'
 
 [kubernetes]
 disabled = false
