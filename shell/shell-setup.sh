@@ -15,3 +15,4 @@ compinit
 export EDITOR=nvim
 export VISUAL=nvim
 alias vim='nvim'
+export LANG=en_US.utf-8
