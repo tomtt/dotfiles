@@ -1,4 +1,7 @@
+README.md
 .git
 .gitignore
 install.sh
 configure_git.sh
+shell
+.vim_undo
