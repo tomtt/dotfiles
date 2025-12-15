@@ -32,6 +32,7 @@ alias vim=nvim
 alias oldvim='NVIM_APPNAME=nvim-tomtt-old vim'
 alias lazyvim='NVIM_APPNAME=lazyvim vim'
 alias tim='NVIM_APPNAME=nvim-tomtt-lua vim'
+alias mvim='NVIM_APPNAME=nvim-minimal vim'
 
 alias fruittuin='echo -ne "\033]0;fruittuin\007";tmux a -t fruittuin'
 alias gabbel_fruittuin='echo -ne "\033]0;gabbel-fruittuin\007";ssh gabbel.fruittuin.nl -t tmux a -t fruittuin-tomtt'
