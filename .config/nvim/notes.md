@@ -100,6 +100,16 @@
   * e mini file explorer
   * e mini file explorer current file
 
+## Multicursor
+* <down/up> add multicursor on line
+* <leader><down/up> skip line
+* <leader>n/N match the word/selection under the cursor forwards / backwards 
+* <leader>s/S skip a match forwards / backwards
+* <left/right> rotate through cursors
+* <leader>x delete current cursor
+* <c-q> disable cursors
+* <esc> enable cursors again (or collapse to single cursor when using multiple cursors)
+
 ## Objects
 * m method
 * M class
@@ -160,7 +170,22 @@
 * <C-space>: select code to ever expanding scope (by treesitter)
 * :mksession writes Session.vim file
 
+# Starship
+## git_status
+  * = conflicted:  This branch has merge conflicts.
+  * ⇡ ahead
+  * ⇣ behind
+  * ⇕ diverged
+  * ? untracked:   There are untracked files in the working directory
+  * $ stashed:     A stash exists for the local repository
+  * ! modified:    There are file modifications in the working directory
+  * \+ staged:     A new file has been added to the staging area
+  * » renamed:     A renamed file has been added to the staging area
+  * ✘ deleted:     A file's deletion has been added to the staging area
+  * ? typechanged: A file's type has been changed in the staging area
 # Todo:
+* [ ] In git fugitive functionality of s (stage) should be mapped to a different key https://github.com/tpope/vim-fugitive/issues/1425
+* [ ] In tmux status show only first 2 letters of day
 * [ ] <leader>fd should telescope all occurences of binding.pry
 * [ ] Running <leader>tt, should not swap current buffer to terminal if it is already visible in another window
 * [ ] telescope for luasnippets
