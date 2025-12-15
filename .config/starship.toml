@@ -3,15 +3,23 @@
 format = """
 [](surface0)\
 $directory\
-[](bg:pink fg:surface0)\
+[](bg:rosewater fg:surface0)\
+$username\
+$hostname\
+$time\
+[](bg:pink fg:rosewater)\
 $git_branch\
 $git_status\
-[](bg:sky fg:pink)\
+$git_metrics\
+[](bg:red fg:pink)\
+$ruby\
+[](bg:sky fg:red)\
 $nodejs\
-$golang\
 [](bg:blue fg:sky)\
 $kubernetes\
-[](fg:blue)
+[](bg:yellow fg:blue)\
+$jobs\
+[](fg:yellow)
 $character\
 """
 
@@ -22,25 +30,49 @@ style = 'bg:surface0'
 format = '[$path ]($style)[$read_only]($style)'
 read_only = '🔒 '
 
+[username]
+show_always = true
+format = '[ $user]($style)'
+style_user = 'bg:rosewater fg:surface0'
+
+[hostname]
+ssh_only=false
+format = '[@$ssh_symbol$hostname ]($style)'
+style = 'bg:rosewater fg:surface0'
+
+[time]
+disabled = false
+style = 'bg:rosewater fg:surface0'
+format = '[🕙$time ]($style)'
+
 [git_branch]
 format = '[ $symbol$branch]($style)'
 style = 'bg:pink fg:surface0'
 
 [git_status]
-format = '[ $all_status$ahead_behind ]($style)'
+format = '[ \[$all_status$ahead_behind\] ]($style)'
 style = 'bg:pink fg:surface0'
+
+[git_metrics]
+disabled = false
+added_style = 'bg:pink fg:added_color'
+deleted_style = 'bg:pink fg:deleted_color'
+format = '[+$added]($added_style)[/](bg:pink fg:surface0)[-$deleted]($deleted_style)[ ](bg:pink fg:surface0)'
+
+[ruby]
+format = '[ $symbol ($version )]($style)'
+style = 'bg:red fg:surface0'
+symbol = ''
 
 [nodejs]
 disabled = false
 format = '[ $symbol$version ](bg:sky fg:surface0)'
 detect_files = ['package.json']
 
-[golang]
-disabled = false
-symbol = " "
-format = '[ $symbol$version ]($style)'
-detect_folders = ['Godeps']
-style = 'bg:sky fg:surface0'
+[jobs]
+style = 'bg:yellow fg:surface0'
+format = '[ $symbol$number]($style)'
+number_threshold = 1
 
 [kubernetes]
 disabled = false
@@ -74,3 +106,5 @@ surface0 = "#313244"
 base = "#1e1e2e"
 mantle = "#181825"
 crust = "#11111b"
+added_color = "#009000"
+deleted_color = "#c00000"
