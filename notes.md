@@ -100,6 +100,16 @@
   * e mini file explorer
   * e mini file explorer current file
 
+## Multicursor
+* <down/up> add multicursor on line
+* <leader><down/up> skip line
+* <leader>n/N match the word/selection under the cursor forwards / backwards 
+* <leader>s/S skip a match forwards / backwards
+* <left/right> rotate through cursors
+* <leader>x delete current cursor
+* <c-q> disable cursors
+* <esc> enable cursors again (or collapse to single cursor when using multiple cursors)
+
 ## Objects
 * m method
 * M class
@@ -113,7 +123,7 @@
   * i# color
 
 ## Quickfix
-* From telescope: <C-q> puts results in quickfix list
+* From telescope: <C-q> puts results in quickfix list (<C-l> for local list)
 * :copen / :cclose open/clone quickfix window
 * `[q/]q` prev/next quickfix
 * <leader>fq to toggle quickfix list
@@ -160,10 +170,47 @@
 * <C-space>: select code to ever expanding scope (by treesitter)
 * :mksession writes Session.vim file
 
+# Shell utilities:
+* dysk graphical show free disc space
+* glances Graphical "top"
+* ncdu NCurses du: shell graphical tool for finding disk usage
+* zoxide (z): cd alternative
+* command -v xxx: show what file is run for command xxx
+* type -a xxx: show all aliases / executables that can be run for xxx
+
+# Starship
+## git_status
+  * = conflicted:  This branch has merge conflicts.
+  * ⇡ ahead
+  * ⇣ behind
+  * ⇕ diverged
+  * ? untracked:   There are untracked files in the working directory
+  * $ stashed:     A stash exists for the local repository
+  * ! modified:    There are file modifications in the working directory
+  * \+ staged:     A new file has been added to the staging area
+  * » renamed:     A renamed file has been added to the staging area
+  * ✘ deleted:     A file's deletion has been added to the staging area
+  * ? typechanged: A file's type has been changed in the staging area
+
 # Todo:
+* [ ] In git fugitive functionality of s (stage) should be mapped to a different key https://github.com/tpope/vim-fugitive/issues/1425
+* [ ] lua dap
+    * https://www.youtube.com/watch?v=47UGK4NgvC8
+    * https://github.com/MariaSolOs/dotfiles/blob/main/.config/nvim/lua/plugins/dap.lua
+    * https://www.youtube.com/watch?v=lyNfnI-B640
+    * https://github.com/tjdevries/config.nvim
+* AI:
+  * [ ] https://old.reddit.com/r/neovim/comments/1pqpo8h/release_agenticnvim_ai_chat_interface_for_claude/
+  * [ ] https://zed.dev/
+  * [ ] https://cursor.com/
+  * [ ] https://danielmiessler.com/blog/replacing-cursor-with-neovim-claude-code
+  * [ ] Claude locally
+* [ ] Dadbod (db)
+* [ ] Bash ls
 * [ ] <leader>fd should telescope all occurences of binding.pry
 * [ ] Running <leader>tt, should not swap current buffer to terminal if it is already visible in another window
 * [ ] telescope for luasnippets
+* [ ] different multi cursor? (changes shown real-time) https://github.com/mg979/vim-visual-multi
 * [ ] yaml lsp
 * [ ] File loaded with :A should have buffer file path relative to root (or <leader>br should rewrite the path to appear as such)
 * [ ] When visual active, <space>fs should use selected text for search
@@ -192,6 +239,9 @@
   * [ ] https://www.youtube.com/watch?v=m8C0Cq9Uv9o The Only Video You Need to Get Started with Neovim
   * [ ] :help fugitive
   * [ ] http://vimeo.com/tpope/vim-dispatch-teaser
+  * [ ] https://www.brandoncasci.com/2023/08/28/inter-process-communication-with-ruby.html
+  * [ ] https://stackoverflow.com/questions/16874715/bi-directional-communication-in-distributed-ruby
+  * [ ] https://www.youtube.com/watch?v=pyV3SEIWsKQ (vim + shell efficiency)
 
 # References
 * https://vimhelp.org
