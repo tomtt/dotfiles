@@ -53,6 +53,6 @@ bindkey -v
 # Ensure ^J is not bound since it is my tmux prefix
 bindkey -r "^J"
 
-source ~/dotfiles/shell-setup.sh
-source ~/dotfiles/aliases.sh
-source ~/dotfiles/git-aliases.sh
+source ~/dotfiles/shell/shell-setup.sh
+source ~/dotfiles/shell/aliases.sh
+source ~/dotfiles/shell/git-aliases.sh
