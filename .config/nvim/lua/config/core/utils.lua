@@ -123,7 +123,8 @@ vim.cmd([[
 " Safe: prints a message if no =fix line or target pick is found.
 function! s:MoveFixupCommit() abort
   " 1. Find the first line containing '=fix <sha>'
-  let l:fixlnum = search('^pick\s\+\S\+\s\+=fix', 'n')
+  let fix_pattern = '^pick\s\+\S\+\s\+#\?\s\+=fix'
+  let l:fixlnum = search(fix_pattern, 'n')
   if l:fixlnum == 0
     echo "No '=fix' line found"
     return
@@ -137,7 +138,7 @@ function! s:MoveFixupCommit() abort
     return
   endif
   let l:fixsha = l:fields[1]
-  let l:targetsha = l:fields[4]
+  let l:targetsha = l:fields[5]
 
   " 3. Find the matching 'pick <targetsha>' line
   let l:targetlnum = search('^pick\s\+' . l:targetsha, 'n')
