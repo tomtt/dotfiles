@@ -53,3 +53,13 @@ function gbc() {
 function gss() {
   git stash show stash@{$1} -p
 }
+function gtfix() {
+  if [ -z "$1" ]
+  then
+    echo "Provide a reference to commit to fix"
+  else
+    # show only last match because it is earliest in history
+    # piped to xargs to strip
+    git commit -m "=fix `gtlg -s 7 -g $1|tail -n 1|xargs`"
+  fi
+}
