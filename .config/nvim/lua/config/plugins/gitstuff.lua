@@ -30,6 +30,14 @@ return {
 
           -- NOTE: easy set up branch that wasn't setup properly
           vim.keymap.set("n", "<leader>t", ":Git push -u origin ", opts)
+
+          vim.api.nvim_create_autocmd("FileType", {
+            pattern = "fugitive",
+            callback = function()
+              vim.keymap.set("n", "gs", function() vim.cmd("normal! s") end,
+                { buffer = true, desc = "Fugitive: stage hunk" })
+            end,
+          })
         end,
       })
     end,
