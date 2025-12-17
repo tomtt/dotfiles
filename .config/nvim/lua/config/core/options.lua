@@ -52,7 +52,7 @@ opt.startofline = false
 
 -- opt.suffixesadd+=.tsx,.ts,.js,.jsx,.scss,.css,.json
 
-opt.clipboard:append("unnamedplus")
+-- opt.clipboard:append("unnamedplus")
 
 opt.formatoptions = [[croqj]]
 
