@@ -11,6 +11,8 @@ return {
     \ switch#Words(['assert_not', 'assert']),
     \ switch#Words(['assert_not_includes', 'assert_includes']),
     \ switch#Words(['assert_changes', 'assert_no_changes']),
+    \ switch#Words(['assert_difference', 'assert_no_difference']),
+    \ switch#Words(['assert_not_equal', 'assert_equal']),
     \ switch#Words(['a', 'an']),
     \ switch#Words(['is', 'are']),
     \ switch#Words(['first', 'second', 'third', 'fourth', 'fifth', 'sixth']),
