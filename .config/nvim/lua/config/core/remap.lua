@@ -2,7 +2,6 @@ local opts = { noremap = true, silent = true }
 
 vim.keymap.set("n", "n", "nzzzv", { desc = "next find with aligned cursor" })
 vim.keymap.set("n", "N", "Nzzzv", { desc = "prev find with aligned cursor" })
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "open explorer" })
 vim.keymap.set("n", "<leader>s", vim.cmd.write, { desc = "write buffer" })
 vim.keymap.set("n", "<leader>ec", function()
   ApplyColorscheme()
@@ -17,6 +16,13 @@ opts.desc = "indent left maintaining selection"
 vim.keymap.set("v", "<", "<gv", opts)
 opts.desc = "indent right maintaining selection"
 vim.keymap.set("v", ">", ">gv", opts)
+
+opts.desc = "yank to system clipboard"
+vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', opts)
+vim.keymap.set({ "n", "v" }, "<leader>Y", '"+Y', opts)
+opts.desc = "paste from system clipboard"
+vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', opts)
+vim.keymap.set({ "n", "v" }, "<leader>P", '"+P', opts)
 
 -- Paste without replacing clipboard content
 vim.keymap.set("x", "<leader>ep", [["_dP]], { desc = 'paste in visual mode without changing @"' })
