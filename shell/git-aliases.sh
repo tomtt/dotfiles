@@ -44,6 +44,12 @@ alias gr='cd `git rev-parse --show-toplevel`'
 alias grs='git restore --staged'
 alias gbh='git log -g --grep-reflog "checkout:" --format="%gs" | cat -n | sed -E "s/^\s+([0-9]+).*from (.*) to .*/\1 \2/g" |head -n 10'
 alias rbcg='git rebase --continue'
+
+# gerrit related
+alias gtlg='gtlg -n 20'
+alias gtlgr='gtlg -p -r -a -m -l 58' alias gt-branch-todo="gtlg -m -s 0|sed -e 's/^\ *\-\?[0-9]\+ /* [ ]/'|tac"
+alias gt-branch-todo="gtlg -m -s 0|sed -e 's/^\ *\-\?[0-9]\+ /* [ ]/'|tac"
+
 function gch() {
   git diff "$1~" "$1"
 }

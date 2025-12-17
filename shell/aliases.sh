@@ -25,14 +25,15 @@ alias ms='mosquitto_sub -v'
 alias v='open -avlc'
 
 alias pstree='/usr/local/bin/pstree -g 2'
-alias gtlg='gtlg -n 20'
-alias gtlgr='gtlg -p -r -a -m -l 58' alias gt-branch-todo="gtlg -m -s 0|sed -e 's/^\ *\-\?[0-9]\+ /* [ ]/'|tac"
 
 alias vim=nvim
 alias oldvim='NVIM_APPNAME=nvim-tomtt-old vim'
 alias lazyvim='NVIM_APPNAME=lazyvim vim'
 alias tim='NVIM_APPNAME=nvim-tomtt-lua vim'
 alias mvim='NVIM_APPNAME=nvim-minimal vim'
+
+# This allows to issue a quit command which will exit ruby if in ruby, or clear the screen if in a terminal
+alias quit="reset"
 
 alias fruittuin='echo -ne "\033]0;fruittuin\007";tmux a -t fruittuin'
 alias gabbel_fruittuin='echo -ne "\033]0;gabbel-fruittuin\007";ssh gabbel.fruittuin.nl -t tmux a -t fruittuin-tomtt'
