@@ -206,5 +206,5 @@ function M.cowboy()
   end
 end
 
-M.cowboy()
+-- M.cowboy()
 return M
