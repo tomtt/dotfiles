@@ -221,5 +221,18 @@ return {
       },
     })
     vim.lsp.enable("gopls")
+
+    -- yaml
+    vim.lsp.config("yamlls", {
+      filetypes = { "yaml" },
+      settings = {
+        yaml = {
+          schemas = {
+            ["https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.0/schema.yaml"] = "/*"
+          }
+        }
+      }
+    })
+    vim.lsp.enable("yamlls")
   end,
 }
