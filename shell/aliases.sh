@@ -34,5 +34,9 @@ alias mvim='NVIM_APPNAME=nvim-minimal vim'
 # This allows to issue a quit command which will exit ruby if in ruby, or clear the screen if in a terminal
 alias quit="reset"
 
+if command -v bat > /dev/null; then
+  alias cat='bat'
+fi
+    
 alias fruittuin='echo -ne "\033]0;fruittuin\007";tmux a -t fruittuin'
 alias gabbel_fruittuin='echo -ne "\033]0;gabbel-fruittuin\007";ssh gabbel.fruittuin.nl -t tmux a -t fruittuin-tomtt'
