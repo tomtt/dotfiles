@@ -5,10 +5,32 @@ alias cuke='./script/cucumber -r features'
 
 alias spc="ruby -Ilib -Ispec"
 
-# some more ls aliases
-alias ls='eza'
-alias ll='eza -alh'
-alias tree='eza --tree --git-ignore'
+# ls aliases
+if command -v eza > /dev/null; then
+  alias ls='eza'
+  alias ll='eza -alh'
+  alias tree='eza --tree --git-ignore'
+else
+  alias ll='ls -l'
+  case "$(uname -s)" in
+
+    Darwin)
+      # echo 'Mac OS X'
+      alias ls='ls -G'
+      ;;
+
+    Linux)
+      alias ls='ls --color=auto'
+      ;;
+
+    CYGWIN* | MINGW32* | MSYS* | MINGW*)
+      # echo 'MS Windows'
+      ;;
+    *)
+      # echo 'Other OS'
+      ;;
+  esac
+fi
 
 alias br='bundle exec rails'
 alias brs='if [ -f tomtt.env ]; then export $(cat tomtt.env | xargs) && bundle exec rails s; else bundle exec rails s; fi;'
