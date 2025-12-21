@@ -6,10 +6,9 @@ alias cuke='./script/cucumber -r features'
 alias spc="ruby -Ilib -Ispec"
 
 # some more ls aliases
-alias ll='ls -l'
-alias la='ls -A'
-#alias l='ls -CF'
-alias ls='ls -F'
+alias ls='eza'
+alias ll='eza -alh'
+alias tree='eza --tree --git-ignore'
 
 alias br='bundle exec rails'
 alias brs='if [ -f tomtt.env ]; then export $(cat tomtt.env | xargs) && bundle exec rails s; else bundle exec rails s; fi;'
