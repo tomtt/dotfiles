@@ -23,6 +23,10 @@ return {
           i = {
             ["<C-k>"] = actions.move_selection_previous,
             ["<C-j>"] = actions.move_selection_next,
+            ["<C-l>"] = actions.send_to_loclist,
+          },
+          n = {
+            ["<C-l>"] = actions.send_to_loclist,
           },
         },
         layout_strategy = "horizontal",
