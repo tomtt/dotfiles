@@ -40,6 +40,13 @@ vim.keymap.set(
   { desc = "Replace word cursor is on globally" }
 )
 
+-- Visual select current indentation
+vim.keymap.set({ "n", "v" }, "<leader>vi", "<cmd>normal Vaijo_<CR>",
+  { desc = "Visual select around current indentation level" })
+
+-- Put cursor on def of current method
+vim.keymap.set("n", "<leader>vm", "<cmd>normal <esc>vamo<esc>w_w<CR>", { desc = "Go to method name" })
+
 -- Hightlight yanking
 vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlight when yanking (copying) text",
