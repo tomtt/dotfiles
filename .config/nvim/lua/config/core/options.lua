@@ -17,6 +17,7 @@ opt.showmode = true
 opt.wrap = false
 opt.encoding = "utf-8"
 opt.number = true
+opt.relativenumber = true
 opt.numberwidth = 3
 opt.title = true
 opt.autoread = true
