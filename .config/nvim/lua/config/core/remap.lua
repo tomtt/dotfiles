@@ -2,7 +2,8 @@ local opts = { noremap = true, silent = true }
 
 vim.keymap.set("n", "n", "nzzzv", { desc = "next find with aligned cursor" })
 vim.keymap.set("n", "N", "Nzzzv", { desc = "prev find with aligned cursor" })
-vim.keymap.set("n", "<leader>s", vim.cmd.write, { desc = "write buffer" })
+vim.keymap.set("n", "<leader>w", vim.cmd.write, { desc = "write buffer" })
+vim.keymap.set("n", "<leader>ss", vim.cmd.write, { desc = "write buffer" })
 vim.keymap.set("n", "<leader>ec", function()
   ApplyColorscheme()
 end, { desc = "apply colorscheme and transparency" })
@@ -39,6 +40,13 @@ vim.keymap.set(
   [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
   { desc = "Replace word cursor is on globally" }
 )
+
+-- Visual select current indentation
+vim.keymap.set({ "n", "v" }, "<leader>si", "<cmd>normal Vaijo_<CR>",
+  { desc = "Visual select around current indentation level" })
+
+-- Put cursor on def of current method
+vim.keymap.set("n", "<leader>sm", "<cmd>normal <esc>vamo<esc>w_w<CR>", { desc = "Go to method name" })
 
 -- Hightlight yanking
 vim.api.nvim_create_autocmd("TextYankPost", {
