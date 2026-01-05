@@ -56,8 +56,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
-vim.keymap.set("v", "<leader>ej", ":m '>+1<CR>gv=gv", { desc = "move lines down in visual mode" })
-vim.keymap.set("v", "<leader>ek", ":m '<-2<CR>gv=gv", { desc = "move lines up in visual mode" })
+vim.keymap.set("v", "<leader>mj", ":m '>+1<CR>gv=gv", { desc = "move lines down in visual mode" })
+vim.keymap.set("v", "<leader>mk", ":m '<-2<CR>gv=gv", { desc = "move lines up in visual mode" })
 vim.keymap.set("n", "<leader>bf", vim.lsp.buf.format, { desc = "format buffer" })
 
 -- close current split window
