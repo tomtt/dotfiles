@@ -6,6 +6,7 @@ opt.termguicolors = true
 -- --"" Other Configurations
 -- filetype plugin indent on
 opt.incsearch = true
+opt.inccommand = "split"
 opt.ignorecase = true
 opt.smartcase = true
 opt.hlsearch = true
