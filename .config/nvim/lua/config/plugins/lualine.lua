@@ -61,6 +61,13 @@ return {
       path = 0,
     }
 
+    local function spell_lang()
+      if vim.opt.spell:get() then
+        return "z-" .. table.concat(vim.opt.spelllang:get(), ",")
+      end
+      return ""
+    end
+
     local branch = { "branch", icon = { "", color = { fg = "#A6D4DE" } }, "|" }
 
     lualine.setup({
@@ -73,7 +80,7 @@ return {
       sections = {
         lualine_a = { mode },
         lualine_b = { branch },
-        lualine_c = { diff, filename },
+        lualine_c = { diff, filename, spell_lang },
         lualine_x = {
           {
             -- require("noice").api.statusline.mode.get,
