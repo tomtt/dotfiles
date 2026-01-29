@@ -11,6 +11,14 @@
     "type": "model",
     "alternate": "test/models/{}_test.rb"
   },
+  "app/searches/*.rb": {
+    "type": "search",
+    "alternate": "test/searches/{}_test.rb"
+  },
+  "app/controllers/*.rb": {
+    "type": "controller",
+    "alternate": "test/controllers/{}_test.rb"
+  },
   "app/lib/*.rb": {
     "type": "lib",
     "alternate": "test/lib/{}_test.rb"
@@ -26,6 +34,14 @@
   "test/models/*_test.rb": {
     "type": "test",
     "alternate": "app/models/{}.rb"
+  },
+  "test/searches/*_test.rb": {
+    "type": "test",
+    "alternate": "app/searches/{}.rb"
+  },
+  "test/controllers/*_test.rb": {
+    "type": "test",
+    "alternate": "app/controllers/{}.rb"
   },
   "test/lib/*_test.rb": {
     "type": "test",
